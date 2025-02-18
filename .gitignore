@@ -34,5 +34,5 @@
 # VSCode settings folder
 .vscode/
 
-# Ignore all log files
-*.DS_Store
+# macOS system files
+.DS_Store
