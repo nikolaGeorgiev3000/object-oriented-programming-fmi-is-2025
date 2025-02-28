@@ -1,0 +1,11 @@
+Shopska_salad
+cucumber
+100
+tomato
+200
+onion
+50
+cheese
+20
+milk
+5.49
