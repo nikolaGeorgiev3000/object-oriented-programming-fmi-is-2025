@@ -18,10 +18,10 @@ void writeBinaryFile(const char* filename) {
     size_t textLength = strlen(text);
 
     // Write data to binary file
-    outFile.write(reinterpret_cast<const char*>(&textLength), sizeof(size_t)); // Store text length
+    outFile.write((const char*)(&textLength), sizeof(size_t)); // Store text length
     outFile.write(text, textLength);
-    outFile.write(reinterpret_cast<const char*>(&x), sizeof(int));
-    outFile.write(reinterpret_cast<const char*>(arr), ARR_SIZE * sizeof(int));
+    outFile.write((const char*)(&x), sizeof(int));
+    outFile.write((const char*)(arr), ARR_SIZE * sizeof(int));
 
     std::cout << "Data written successfully.\n";
 }

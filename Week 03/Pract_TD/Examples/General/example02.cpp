@@ -1,36 +1,36 @@
 #include <iostream>
 
-struct A
+struct A 
 {
 	char word[5];
 	int occupiedSpace;
 };
 
-struct B
+struct B 
 {
 	char word[5];
 	double occupiedSpace;
 };
 
-struct C
+struct C 
 {
 	int length;
 	char word[5];
 };
 
-struct D
+struct D 
 {
     double f;
     char k;
 };
 
-struct E
+struct E 
 {
     D obj;
     char c;
 };
 
-struct F
+struct F 
 {
     double f;
     char k;
