@@ -1,6 +1,6 @@
 // 1. Напишете функция, която приема символен низ и връща ново заделен символен низ,
 // съдържащ само цифрите от подадения низ.
-
+// Temporary change to trigger rename
 #include <iostream>
 
 bool isDigit(char c)
