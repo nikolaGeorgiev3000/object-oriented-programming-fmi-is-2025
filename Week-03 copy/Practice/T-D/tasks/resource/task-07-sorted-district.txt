@@ -1,0 +1,4 @@
+Burgas 200000
+Plovdiv 340000
+Varna 370000
+Sofia 1200000
