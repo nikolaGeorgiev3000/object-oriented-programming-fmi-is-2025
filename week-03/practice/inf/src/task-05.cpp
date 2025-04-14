@@ -4,7 +4,7 @@
 име също се чете от стандартния вход. Опитайте да решите същата задача, но записването
 на редовете да бъде в същия файл.
 */
-
+// Temp change to trigger fold
 #include <cstring>
 #include <fstream>
 #include <iostream>
