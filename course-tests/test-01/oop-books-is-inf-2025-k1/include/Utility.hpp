@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+// Important constants for our task
 namespace Constants
 {
 constexpr size_t ID_LEN = 12; // "IS-INF-0000" + '\0'
@@ -10,6 +11,7 @@ constexpr size_t INITIAL_CAPACITY = 16;
 constexpr size_t MAX_BOOKS = 500;
 } // namespace Constants
 
+// Usually used powerful utility-functions
 namespace Utils
 {
 inline bool isValidString(const char* str)
@@ -29,7 +31,8 @@ inline void safeCopy(char* dest, const char* src, size_t maxLen)
     dest[i] = '\0';
 }
 
-template <typename T> // Template function for resizing any type of array.
+// Template function for resizing any type of array.
+template <typename T>
 inline void resizePointerArray(T*& array, size_t& currentCapacity)
 {
     size_t newCapacity = (currentCapacity == 0) ? INITIAL_CAPACITY : currentCapacity * 2;
@@ -43,7 +46,8 @@ inline void resizePointerArray(T*& array, size_t& currentCapacity)
     currentCapacity = newCapacity;
 }
 
-template <typename T> // Template function for resizing any type of array of pointers
+// Template function for resizing any type of array of pointers
+template <typename T>
 inline void resizePointerArray(T**& array, size_t& currentCapacity)
 {
     size_t newCapacity = (currentCapacity == 0) ? 2 : currentCapacity * 2;

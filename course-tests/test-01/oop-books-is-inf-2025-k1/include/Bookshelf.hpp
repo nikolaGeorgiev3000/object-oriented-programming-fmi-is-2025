@@ -15,11 +15,11 @@ class Bookshelf
     Bookshelf& operator=(const Bookshelf&) = delete;
 
     // Functionality
-    void addBook(Book&); // Добавя книга на най-ниския възможен рафт
+    void addBook(Book&); // Adds a book to the lowest possible shelf
     void removeBook(Book&);
     Book* findBookByName(const char*) const;
 
-    void resizeShelves(unsigned int); // Променя лимита на страници на всеки рафт, изхвърля неподходящите книги
+    void resizeShelves(unsigned int); // Changes the page limit of each shelf, removes unsuitable books
     void print() const;
 
   private:

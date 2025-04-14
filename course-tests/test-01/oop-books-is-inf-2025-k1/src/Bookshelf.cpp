@@ -96,7 +96,7 @@ void Bookshelf::Shelf::resize(unsigned int newMaxPages)
         unsigned int currBookPages = books[i]->getPages();
         if (newTotalPages + currBookPages > newMaxPages)
         {
-            Utils::shiftLeftFromIndex(books, bookCount, i); // Не увеличаваме `i`, защото на `i` вече има нова книга
+            Utils::shiftLeftFromIndex(books, bookCount, i); // New book on `i`, so we don't increment it.
         }
         else
         {
