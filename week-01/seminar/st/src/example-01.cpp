@@ -1,5 +1,5 @@
-#include <iostream> 
 #include <cstring>
+#include <iostream>
 
 struct Point
 {
@@ -14,12 +14,12 @@ struct Person
     unsigned short age;
 };
 
-void printPerson(const Person &p) // Const reference to avoid modifying the person
+void printPerson(const Person& p) // Const reference to avoid modifying the person
 {
     std::cout << "Person: " << p.firstName << " " << p.lastName << ", " << p.age << " years old." << std::endl;
 }
 
-void setAgeRef(Person &p, unsigned short newAge) // Reference to modify the person
+void setAgeRef(Person& p, unsigned short newAge) // Reference to modify the person
 {
     p.age = newAge;
 }
@@ -29,7 +29,7 @@ void setAgeCopy(Person p)
     p.age = 15;
 }
 
-void setAgePtr(Person *p, unsigned short newAge)
+void setAgePtr(Person* p, unsigned short newAge)
 {
     if (p)
     {
@@ -43,7 +43,7 @@ int main()
     start.x = 0.0;
     start.y = 0.0;
 
-    Person *p1 = new Person();
+    Person* p1 = new Person();
     strcpy(p1->firstName, "John");
     strcpy(p1->lastName, "Doe");
     p1->age = 30;

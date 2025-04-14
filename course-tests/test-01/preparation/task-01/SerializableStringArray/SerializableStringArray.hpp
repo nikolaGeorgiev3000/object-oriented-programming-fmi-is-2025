@@ -1,16 +1,17 @@
 #ifndef _SER_STRING_ARRAY_HPP_
 #define _SER_STRING_ARRAY_HPP_
 
-#include <cstring> 
+#include <cstring>
 
-class SerializableStringArray {
-public:
+class SerializableStringArray
+{
+  public:
     SerializableStringArray(size_t maxStringCount, size_t maxStringLength);
-    SerializableStringArray(const char* filename); // Deserialize 
-    
+    SerializableStringArray(const char* filename); // Deserialize
+
     SerializableStringArray(const SerializableStringArray& other);
     SerializableStringArray& operator=(const SerializableStringArray& other);
-    
+
     ~SerializableStringArray();
 
     void addString(const char* str);
@@ -22,10 +23,11 @@ public:
 
     void writeToBinary(const char* filename) const;
 
-private:
+  private:
     char* data = nullptr;
 
-    struct MetaData {
+    struct MetaData
+    {
         size_t _maxStringCount = 0;
         size_t _maxStringLength = 0;
         size_t _currentCount = 0;

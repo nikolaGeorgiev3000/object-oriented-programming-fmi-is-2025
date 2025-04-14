@@ -3,20 +3,20 @@
 
 #include <iostream>
 
-double getDistance(const Point &, const Point &);
-double getArea(const Triangle &);
-void calculateAreas(const Triangle *, int, double*);
-void selectionSort(Triangle *, int, double *);
+double getDistance(const Point&, const Point&);
+double getArea(const Triangle&);
+void calculateAreas(const Triangle*, int, double*);
+void selectionSort(Triangle*, int, double*);
 
 int main()
 {
     int n;
     std::cin >> n;
 
-    Triangle *triangles = new Triangle[n];
+    Triangle* triangles = new Triangle[n];
     readTriangles(triangles, n);
 
-    double *areas = new double[n];
+    double* areas = new double[n];
     calculateAreas(triangles, n, areas);
 
     selectionSort(triangles, n, areas);
@@ -30,7 +30,7 @@ int main()
     return 0;
 }
 
-double getDistance(const Point &p1, const Point &p2)
+double getDistance(const Point& p1, const Point& p2)
 {
     double dx = p1.x - p2.x;
     double dy = p1.y - p2.y;
@@ -38,7 +38,7 @@ double getDistance(const Point &p1, const Point &p2)
     return sqrt(dx * dx + dy * dy);
 }
 
-double getArea(const Triangle &t)
+double getArea(const Triangle& t)
 {
     double side01 = getDistance(t.A, t.B);
     double side02 = getDistance(t.B, t.C);
@@ -49,7 +49,7 @@ double getArea(const Triangle &t)
     return sqrt(halfPer * (halfPer - side01) * (halfPer - side02) * (halfPer - side03));
 }
 
-void calculateAreas(const Triangle *triangles, int n, double *areas)
+void calculateAreas(const Triangle* triangles, int n, double* areas)
 {
     for (int i = 0; i < n; i++)
     {
@@ -57,7 +57,7 @@ void calculateAreas(const Triangle *triangles, int n, double *areas)
     }
 }
 
-void selectionSort(Triangle *triangles, int n, double *areas)
+void selectionSort(Triangle* triangles, int n, double* areas)
 {
     for (size_t i = 0; i < n - 1; i++)
     {

@@ -14,7 +14,7 @@ size_t getOccurences(std::ifstream& ifs, char ch)
             ++count;
     }
 
-    ifs.clear(); // Clear the EOF flag in case of EOF hit
+    ifs.clear();             // Clear the EOF flag in case of EOF hit
     ifs.seekg(currentIndex); // Restore position
 
     return count;

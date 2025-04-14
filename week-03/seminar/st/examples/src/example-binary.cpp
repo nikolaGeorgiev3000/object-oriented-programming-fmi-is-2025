@@ -1,12 +1,14 @@
-#include <iostream>
-#include <fstream>
 #include <cstring>
+#include <fstream>
+#include <iostream>
 
 constexpr size_t ARR_SIZE = 10;
 
-void writeBinaryFile(const char* filename) {
+void writeBinaryFile(const char* filename)
+{
     std::ofstream outFile(filename, std::ios::binary);
-    if (!outFile) {
+    if (!outFile)
+    {
         std::cerr << "Error opening file for writing!" << std::endl;
         return;
     }
@@ -26,9 +28,11 @@ void writeBinaryFile(const char* filename) {
     std::cout << "Data written successfully.\n";
 }
 
-void readBinaryFile(const char* filename) {
+void readBinaryFile(const char* filename)
+{
     std::ifstream inFile(filename, std::ios::binary);
-    if (!inFile) {
+    if (!inFile)
+    {
         std::cerr << "Error opening file for reading!" << std::endl;
         return;
     }
@@ -46,8 +50,10 @@ void readBinaryFile(const char* filename) {
     inFile.read(reinterpret_cast<char*>(&x), sizeof(int));
     inFile.read(reinterpret_cast<char*>(arr), ARR_SIZE * sizeof(int));
 
-    std::cout << line << "\n" << x << "\n";
-    for (size_t i = 0; i < ARR_SIZE; i++) {
+    std::cout << line << "\n"
+              << x << "\n";
+    for (size_t i = 0; i < ARR_SIZE; i++)
+    {
         std::cout << arr[i] << " ";
     }
     std::cout << "\n";
@@ -55,7 +61,8 @@ void readBinaryFile(const char* filename) {
     delete[] line; // Clean up dynamically allocated memory
 }
 
-int main() {
+int main()
+{
     const char* filename = "test.dat";
 
     writeBinaryFile(filename);

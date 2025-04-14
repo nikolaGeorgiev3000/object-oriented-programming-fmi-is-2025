@@ -1,21 +1,24 @@
-/* 
-4. Напишете програма, която чете три цели числа от стандартния вход. 
+/*
+4. Напишете програма, която чете три цели числа от стандартния вход.
 Напишете функция, която приема трите числа и име на файл, в който ще запишете сумата и произведението им.
 */
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-bool writeSumAndProductToBinaryFile(int a, int b, int c, const char* filename) {
-    if (!filename) {
+bool writeSumAndProductToBinaryFile(int a, int b, int c, const char* filename)
+{
+    if (!filename)
+    {
         std::cerr << "Невалидно име на файл!" << std::endl;
         return false;
     }
 
     std::ofstream outFile(filename, std::ios::binary);
-    if (!outFile.is_open()) {
+    if (!outFile.is_open())
+    {
         std::cerr << "Грешка при отваряне на бинарен файл: " << filename << std::endl;
-        return false; 
+        return false;
     }
 
     int sum = a + b + c;
@@ -29,14 +32,17 @@ bool writeSumAndProductToBinaryFile(int a, int b, int c, const char* filename) {
     return true;
 }
 
-bool readSumAndProductFromBinaryFile(const char* filename, int& sum, int& product) {
-    if (!filename) {
+bool readSumAndProductFromBinaryFile(const char* filename, int& sum, int& product)
+{
+    if (!filename)
+    {
         std::cerr << "Невалидно име на файл!" << std::endl;
         return false;
     }
 
     std::ifstream inFile(filename, std::ios::binary);
-    if (!inFile.is_open()) {
+    if (!inFile.is_open())
+    {
         std::cerr << "Грешка при отваряне на бинарен файл: " << filename << std::endl;
         return false;
     }
@@ -55,13 +61,15 @@ int main()
     int x, y, z;
     std::cin >> x >> y >> z;
 
-    if (!writeSumAndProductToBinaryFile(x, y, z, "task04_binary_output.dat")) {
+    if (!writeSumAndProductToBinaryFile(x, y, z, "task04_binary_output.dat"))
+    {
         std::cerr << "Неуспешно записване във файл!" << std::endl;
         return 1;
     }
 
     int sum = 0, product = 0;
-    if (!readSumAndProductFromBinaryFile("task04_binary_output.dat", sum, product)) {
+    if (!readSumAndProductFromBinaryFile("task04_binary_output.dat", sum, product))
+    {
         std::cerr << "Неуспешно четене от файл!" << std::endl;
         return 1;
     }

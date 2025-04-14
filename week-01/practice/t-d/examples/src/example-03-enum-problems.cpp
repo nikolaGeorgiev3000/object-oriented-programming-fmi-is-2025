@@ -2,11 +2,15 @@
 
 enum class Color
 {
-    Red = 1, Orange = 1, Blue
+    Red = 1,
+    Orange = 1,
+    Blue
 };
 enum class Fruit
 {
-    Apple, Orange, Banana
+    Apple,
+    Orange,
+    Banana
 };
 
 int main()

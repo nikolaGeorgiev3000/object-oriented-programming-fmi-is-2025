@@ -17,7 +17,7 @@ struct Point
         std::cout << "(" << this->x << ", " << this->y << ")\n";
     }
 
-    double distanceTo(const Point &other) const
+    double distanceTo(const Point& other) const
     {
         return sqrt((x - other.x) * (x - other.x) +
                     (y - other.y) * (y - other.y)); // c = sqrt(a^2 + b^2)

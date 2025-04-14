@@ -1,17 +1,18 @@
 #include "ExchangeRates.hpp"
 
-#include <iostream>
 #include <cstring>
-#include <stdexcept>
 #include <fstream>
+#include <iostream>
+#include <stdexcept>
 
-#pragma warning (disable : 4996)
+#pragma warning(disable : 4996)
 
-
-ExchangeRates::ExchangeRates(const char* filename) : rates(nullptr), count(0), capacity(0) {
+ExchangeRates::ExchangeRates(const char* filename) : rates(nullptr), count(0), capacity(0)
+{
     std::ifstream inFile(filename);
 
-    if (!inFile.is_open()) {
+    if (!inFile.is_open())
+    {
         throw std::runtime_error("Failed to open exchange rate file.");
     }
 
@@ -19,8 +20,10 @@ ExchangeRates::ExchangeRates(const char* filename) : rates(nullptr), count(0), c
     char to[MAX_CURRENCY_LENGTH];
     double rate;
 
-    while (inFile >> from >> to >> rate) {
-        if (count == capacity) {
+    while (inFile >> from >> to >> rate)
+    {
+        if (count == capacity)
+        {
             resize();
         }
 
@@ -38,7 +41,8 @@ ExchangeRates::ExchangeRates(const char* filename) : rates(nullptr), count(0), c
     inFile.close();
 }
 
-void ExchangeRates::resize() {
+void ExchangeRates::resize()
+{
     capacity = (capacity == 0) ? INITIAL_CAPACITY : capacity * 2;
 
     Rate* temp = new Rate[capacity];
@@ -52,31 +56,37 @@ void ExchangeRates::resize() {
     rates = temp;
 }
 
-ExchangeRates::ExchangeRates(const ExchangeRates& other) {
+ExchangeRates::ExchangeRates(const ExchangeRates& other)
+{
     copyFrom(other);
 }
 
-ExchangeRates& ExchangeRates::operator=(const ExchangeRates& other) {
-    if (this != &other) {
+ExchangeRates& ExchangeRates::operator=(const ExchangeRates& other)
+{
+    if (this != &other)
+    {
         free();
         copyFrom(other);
     }
     return *this;
 }
 
-ExchangeRates::~ExchangeRates() {
+ExchangeRates::~ExchangeRates()
+{
     free();
 }
 
-void ExchangeRates::free() {
+void ExchangeRates::free()
+{
     delete[] rates;
     rates = nullptr;
     capacity = count = 0;
 }
 
-void ExchangeRates::copyFrom(const ExchangeRates& other) {
+void ExchangeRates::copyFrom(const ExchangeRates& other)
+{
 
-    // Armqnka brat, prowerka tuka eiiii 
+    // Armqnka brat, prowerka tuka eiiii
     count = other.count;
     capacity = other.capacity;
 
@@ -86,26 +96,27 @@ void ExchangeRates::copyFrom(const ExchangeRates& other) {
     {
         rates[i] = other.rates[i];
     }
-    
-    
 }
-    
-double ExchangeRates::convert(double amount, const char* from, const char* to) const {
-    if (strcmp(from, to) == 0) 
+
+double ExchangeRates::convert(double amount, const char* from, const char* to) const
+{
+    if (strcmp(from, to) == 0)
         return amount;
 
     for (size_t i = 0; i < count; ++i)
     {
         if (strcmp(rates[i].from, from) == 0 &&
-            strcmp(rates[i].to, to) == 0) {
+            strcmp(rates[i].to, to) == 0)
+        {
             return rates[i].rate * amount;
         }
     }
 
     throw std::runtime_error("No exchange rate found in the file.");
-}    
+}
 
-void ExchangeRates::print() const {
+void ExchangeRates::print() const
+{
     for (size_t i = 0; i < count; ++i)
     {
         std::cout << rates[i].from << " " << rates[i].to << " " << rates[i].rate << std::endl;

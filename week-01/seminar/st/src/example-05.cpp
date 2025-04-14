@@ -1,7 +1,6 @@
 #include <iostream>
 
-
-void printArr(int *arr, int size) 
+void printArr(int* arr, int size)
 {
     for (size_t i = 0; i < size; i++)
     {
@@ -11,13 +10,17 @@ void printArr(int *arr, int size)
 
 enum class Course : long long int // We can set the `default type` for the enum class.
 {
-    First, Second, Third, Fourth
+    First,
+    Second,
+    Third,
+    Fourth
 };
 
-struct Student {
+struct Student
+{
     char name[16];
     Course course;
-    unsigned age; // The size of `unsigned` variable is 4 bytes.  
+    unsigned age; // The size of `unsigned` variable is 4 bytes.
 };
 
 int main()

@@ -18,7 +18,7 @@ enum class Genre
 };
 
 // Helper functions
-Genre getGenreFromString(const char *genreStr)
+Genre getGenreFromString(const char* genreStr)
 {
     if (genreStr[0] == 'R')
         return Genre::Rock;
@@ -33,7 +33,7 @@ Genre getGenreFromString(const char *genreStr)
     return Genre::Unknown;
 }
 
-const char *convertGenreToString(Genre genre)
+const char* convertGenreToString(Genre genre)
 {
     switch (genre)
     {

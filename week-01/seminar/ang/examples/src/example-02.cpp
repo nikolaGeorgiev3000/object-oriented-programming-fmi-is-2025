@@ -2,10 +2,10 @@
 
 struct Box
 {
-	double height;
-	double width;
-	double length;
-	// double height, width, length; is also possible
+    double height;
+    double width;
+    double length;
+    // double height, width, length; is also possible
 };
 
 double calcVolume(const Box& b) // ConstRef because we do not modify the object

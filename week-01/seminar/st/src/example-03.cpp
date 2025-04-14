@@ -6,7 +6,7 @@ struct Point
     double y;
 };
 
-void printPoint(const Point &p)
+void printPoint(const Point& p)
 {
     std::cout << "Point: (" << p.x << ", " << p.y << ")" << std::endl;
 }
@@ -28,7 +28,7 @@ int main()
     std::cout << std::endl;
 
     // Dynamic point array
-    Point *ptArrDyn = new Point[2];
+    Point* ptArrDyn = new Point[2];
 
     std::cin >> ptArrDyn[0].x;
     std::cin >> ptArrDyn[0].y;

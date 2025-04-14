@@ -1,12 +1,12 @@
 /*
     Да се направи функция, която "разшифрова" скрито съобщение.
-    Съобщението представлява двоичен файл с неизвестна дължина. 
+    Съобщението представлява двоичен файл с неизвестна дължина.
     Това, което съхранява е поредица от цели неотрицателни числа.
-    "Ключът" за съобщението се съхранява в друг двоичен файл и 
-    представлява число в интервала [0, 255]. 
+    "Ключът" за съобщението се съхранява в друг двоичен файл и
+    представлява число в интервала [0, 255].
     Преценете как е най-подходящо да прочетете и съхраните ключа.
 
-    Шифърът за получаване на правилното съобщение е към всяко число 
+    Шифърът за получаване на правилното съобщение е към всяко число
     от прочетения файл, съдържащ съобщението да се добави стойността на прочетения ключ
 
     Пояснение: ако файлът със скритото съобщение след прочитане изглежда така: 23 48 3 12 4006
@@ -15,13 +15,15 @@
     Изведете разшифрованото съобщение на конзолата.
     Пояснение 2: функцията ви трябва да има следната сигнатура
 
-	void decypherMessage(const char* rawMessageFileName, const char* keyFileName )
+        void decypherMessage(const char* rawMessageFileName, const char* keyFileName )
 */
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-void decypherMessage(const char* rawMessageFilename, const char* keyFilename) {
-    if (!rawMessageFilename || !keyFilename) {
+void decypherMessage(const char* rawMessageFilename, const char* keyFilename)
+{
+    if (!rawMessageFilename || !keyFilename)
+    {
         std::cerr << "Invalid filenames.\n";
         return;
     }
@@ -29,7 +31,8 @@ void decypherMessage(const char* rawMessageFilename, const char* keyFilename) {
     // Read the key
     std::ifstream in1(keyFilename, std::ios::binary);
 
-    if(!in1.is_open()) return;
+    if (!in1.is_open())
+        return;
 
     unsigned char keyValue; // [0, 255]
 
@@ -40,13 +43,15 @@ void decypherMessage(const char* rawMessageFilename, const char* keyFilename) {
     // Read the values & do calculations
     std::ifstream in2(rawMessageFilename, std::ios::binary);
 
-    if (!in2.is_open()) return;
+    if (!in2.is_open())
+        return;
 
     unsigned int value = 0;
-    
+
     std::cout << "Raw msg: \n";
 
-    while(in2.read(reinterpret_cast<char*>(&value), sizeof(value))) {
+    while (in2.read(reinterpret_cast<char*>(&value), sizeof(value)))
+    {
         std::cout << value << " ";
     }
 
@@ -56,7 +61,8 @@ void decypherMessage(const char* rawMessageFilename, const char* keyFilename) {
 
     std::cout << "\nDecyphered msg: \n";
 
-    while(in2.read(reinterpret_cast<char*>(&value), sizeof(value))) {
+    while (in2.read(reinterpret_cast<char*>(&value), sizeof(value)))
+    {
         std::cout << (value + keyValue) << " ";
     }
     std::cout << std::endl;
@@ -64,7 +70,8 @@ void decypherMessage(const char* rawMessageFilename, const char* keyFilename) {
     in2.close();
 }
 
-int main() {
+int main()
+{
     decypherMessage("encrypted.dat", "key.dat");
 
     return 0;

@@ -6,37 +6,45 @@
         Отпечатване на хората, които изкарват над средната заплата
         Добавяне на човек във файла people.dat
 */
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 constexpr size_t MAX_NAME_LENGTH = 24;
 constexpr size_t MAX_PEOPLE = 1024;
 
-struct Person {
+struct Person
+{
     char name[MAX_NAME_LENGTH];
     unsigned salary;
 };
 
-bool readAllPeople(const char* filename, Person* people, size_t& outCount, size_t maxCount) {
-    if (!filename) return false;
+bool readAllPeople(const char* filename, Person* people, size_t& outCount, size_t maxCount)
+{
+    if (!filename)
+        return false;
 
     std::ifstream inFile(filename, std::ios::binary);
 
-    if (!inFile.is_open()) return false;
+    if (!inFile.is_open())
+        return false;
 
     outCount = 0;
-    while (inFile.read(reinterpret_cast<char*>(&people[outCount]), sizeof(Person))) {
+    while (inFile.read(reinterpret_cast<char*>(&people[outCount]), sizeof(Person)))
+    {
         ++outCount;
-        if (outCount >= maxCount) break;
+        if (outCount >= maxCount)
+            break;
     }
 
     inFile.close();
     return true;
 }
 
-double calculateAvgSalary(const Person* people, size_t count) {
-    if (count == 0) return 0.0;
-    
+double calculateAvgSalary(const Person* people, size_t count)
+{
+    if (count == 0)
+        return 0.0;
+
     unsigned totalSalary = 0;
     for (size_t i = 0; i < count; ++i)
     {
@@ -45,27 +53,33 @@ double calculateAvgSalary(const Person* people, size_t count) {
     return static_cast<double>(totalSalary) / count;
 }
 
-void printPeopleAboveAvg(const Person* people, size_t count, double avgSalary) {
+void printPeopleAboveAvg(const Person* people, size_t count, double avgSalary)
+{
     std::cout << "People with above " << avgSalary << " salary: " << std::endl;
 
     for (size_t i = 0; i < count; ++i)
     {
-        if (people[i].salary > avgSalary) {
+        if (people[i].salary > avgSalary)
+        {
             std::cout << "Person " << i + 1 << ":\n";
             std::cout << people[i].name << ", " << people[i].salary << std::endl;
         }
     }
 }
 
-bool printPeopleAboveAvgSalary(const char* filename) {
-    if (!filename) return false;
+bool printPeopleAboveAvgSalary(const char* filename)
+{
+    if (!filename)
+        return false;
 
     Person people[MAX_PEOPLE];
     size_t count = 0;
 
-    if (!readAllPeople(filename, people, count, MAX_PEOPLE)) return false;
+    if (!readAllPeople(filename, people, count, MAX_PEOPLE))
+        return false;
 
-    if (count == 0) {
+    if (count == 0)
+    {
         std::cout << "No data" << std::endl;
         return true;
     }
@@ -74,10 +88,11 @@ bool printPeopleAboveAvgSalary(const char* filename) {
 
     printPeopleAboveAvg(people, count, avgSalary);
 
-    return true;                                                     
+    return true;
 }
 
-Person createPerson(const char* name, unsigned salary) {
+Person createPerson(const char* name, unsigned salary)
+{
     Person p;
     strcpy(p.name, name);
     p.salary = salary;
@@ -85,12 +100,15 @@ Person createPerson(const char* name, unsigned salary) {
     return p;
 }
 
-bool appendPersonToFile(const char* filename, const Person& person) {
-    if (!filename) return false;
+bool appendPersonToFile(const char* filename, const Person& person)
+{
+    if (!filename)
+        return false;
 
     std::ofstream ofs(filename, std::ios::binary | std::ios::app);
 
-    if (!ofs.is_open()) return false;
+    if (!ofs.is_open())
+        return false;
 
     ofs.write(reinterpret_cast<const char*>(&person), sizeof(Person));
 
@@ -98,20 +116,23 @@ bool appendPersonToFile(const char* filename, const Person& person) {
     return true;
 }
 
-bool addPersonToFile(const char* filename, const char* name, unsigned salary) {
-    if (!filename || !name) return false;
+bool addPersonToFile(const char* filename, const char* name, unsigned salary)
+{
+    if (!filename || !name)
+        return false;
 
     Person p = createPerson(name, salary);
     return appendPersonToFile(filename, p);
 }
 
-int main() {
+int main()
+{
     const char* file = "people.dat";
 
     addPersonToFile(file, "Ivan Ivanov", 1500);
     addPersonToFile(file, "Petya Petrova", 2200);
 
-    printPeopleAboveAvgSalary(file); 
+    printPeopleAboveAvgSalary(file);
 
     return 0;
 }

@@ -2,7 +2,7 @@
 
 class Dummy
 {
-public:
+  public:
     Dummy() { std::cout << "Default ctor" << std::endl; }
     ~Dummy() { std::cout << "Dtor" << std::endl; }
 };
@@ -27,7 +27,6 @@ int main()
     } // Dtor, Dtor
     catch (...)
     {
-
     }
     std::cout << "End" << std::endl;
 } // Dtor

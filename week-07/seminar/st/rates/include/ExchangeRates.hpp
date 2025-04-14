@@ -5,8 +5,9 @@
 constexpr unsigned short MAX_CURRENCY_LENGTH = 4;
 constexpr unsigned short INITIAL_CAPACITY = 8;
 
-class ExchangeRates {
-public:
+class ExchangeRates
+{
+  public:
     ExchangeRates(const char*);
     ExchangeRates(const ExchangeRates&);
     ExchangeRates& operator=(const ExchangeRates&);
@@ -15,8 +16,9 @@ public:
     double convert(double, const char*, const char*) const;
     void print() const;
 
-private:
-    struct Rate {
+  private:
+    struct Rate
+    {
         char from[MAX_CURRENCY_LENGTH];
         char to[MAX_CURRENCY_LENGTH];
         double rate;

@@ -1,42 +1,61 @@
 /*
-    8. Надградете функционалността на задача 5 от предния практикум (практикум 2), 
-    като добавите възможност за записване на плейлистите в текстов файл и четене на плейлисти от текстов файл. 
+    8. Надградете функционалността на задача 5 от предния практикум (практикум 2),
+    като добавите възможност за записване на плейлистите в текстов файл и четене на плейлисти от текстов файл.
     Начинът на сериализация на данните зависи от вас.
 */
 
-
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 constexpr size_t MAX_TEXT = 101;
 constexpr size_t MAX_SONGS = 64;
 
-enum Genre {
-    ROCK, POP, THRASH_METAL, KPOP, CHALGA,
+enum Genre
+{
+    ROCK,
+    POP,
+    THRASH_METAL,
+    KPOP,
+    CHALGA,
     GENRE_COUNT
 };
 
-const char* genreToStr(Genre g) {
-    switch (g) {
-        case ROCK: return "Rock";
-        case POP: return "Pop";
-        case THRASH_METAL: return "Thrash Metal";
-        case KPOP: return "K-pop";
-        case CHALGA: return "Chalga";
-        default: return "Unknown";
+const char* genreToStr(Genre g)
+{
+    switch (g)
+    {
+    case ROCK:
+        return "Rock";
+    case POP:
+        return "Pop";
+    case THRASH_METAL:
+        return "Thrash Metal";
+    case KPOP:
+        return "K-pop";
+    case CHALGA:
+        return "Chalga";
+    default:
+        return "Unknown";
     }
 }
 
-Genre strToGenre(const char* str) {
-    if (strcmp(str, "Rock") == 0) return ROCK;
-    if (strcmp(str, "Pop") == 0) return POP;
-    if (strcmp(str, "Thrash Metal") == 0) return THRASH_METAL;
-    if (strcmp(str, "K-pop") == 0) return KPOP;
-    if (strcmp(str, "Chalga") == 0) return CHALGA;
+Genre strToGenre(const char* str)
+{
+    if (strcmp(str, "Rock") == 0)
+        return ROCK;
+    if (strcmp(str, "Pop") == 0)
+        return POP;
+    if (strcmp(str, "Thrash Metal") == 0)
+        return THRASH_METAL;
+    if (strcmp(str, "K-pop") == 0)
+        return KPOP;
+    if (strcmp(str, "Chalga") == 0)
+        return CHALGA;
     return GENRE_COUNT; // invalid genre
 }
 
-struct Song {
+struct Song
+{
     char title[MAX_TEXT];
     char artist[MAX_TEXT];
     Genre genre;
@@ -44,15 +63,19 @@ struct Song {
     unsigned int playCount;
 };
 
-struct Playlist {
+struct Playlist
+{
     Song songs[MAX_SONGS];
     size_t size = 0;
 };
 
-bool writePlaylistToFile(const char* outputFilename, const Playlist& playlist) {
-    if (!outputFilename) return false;
+bool writePlaylistToFile(const char* outputFilename, const Playlist& playlist)
+{
+    if (!outputFilename)
+        return false;
     std::ofstream outFile(outputFilename);
-    if (!outFile.is_open()) return false;
+    if (!outFile.is_open())
+        return false;
 
     for (size_t i = 0; i < playlist.size; ++i)
     {
@@ -64,19 +87,23 @@ bool writePlaylistToFile(const char* outputFilename, const Playlist& playlist) {
                 << song.rating << '\n'
                 << song.playCount << '\n';
     }
-    
+
     outFile.close();
     return true;
 }
 
-bool readPlaylistFromFile(const char* filename, Playlist& playlist) {
-    if (!filename) return false;
+bool readPlaylistFromFile(const char* filename, Playlist& playlist)
+{
+    if (!filename)
+        return false;
     std::ifstream inFile(filename);
-    if (!inFile.is_open()) return false;
+    if (!inFile.is_open())
+        return false;
 
     playlist.size = 0;
 
-    while (inFile && playlist.size < MAX_SONGS) {
+    while (inFile && playlist.size < MAX_SONGS)
+    {
         Song& song = playlist.songs[playlist.size];
 
         inFile.getline(song.title, MAX_TEXT);
@@ -97,7 +124,8 @@ bool readPlaylistFromFile(const char* filename, Playlist& playlist) {
     return true;
 }
 
-int main() {
+int main()
+{
     Playlist playlist;
 
     // Добавяме примерни песни
@@ -121,8 +149,9 @@ int main() {
     readPlaylistFromFile("task08_playlist.txt", loaded);
 
     std::cout << "Прочетени песни от файл:\n";
-    for (size_t i = 0; i < loaded.size; ++i) {
-        std::cout << loaded.songs[i].title << " | " 
+    for (size_t i = 0; i < loaded.size; ++i)
+    {
+        std::cout << loaded.songs[i].title << " | "
                   << loaded.songs[i].artist << " | "
                   << genreToStr(loaded.songs[i].genre) << " | "
                   << loaded.songs[i].rating << " | "

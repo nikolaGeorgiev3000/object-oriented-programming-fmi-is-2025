@@ -1,6 +1,6 @@
 #include <iostream>
 
-enum class Status 
+enum class Status
 {
     OK,
     Error
@@ -20,7 +20,7 @@ bool isDigit(char c)
 ParseResult parse(const char* input)
 {
     ParseResult toReturn;
-    if (!input) 
+    if (!input)
     {
         toReturn.status = Status::Error;
         toReturn.number = 0; // ?
@@ -47,7 +47,7 @@ int main()
     constexpr size_t MAX_SIZE = 100;
 
     char input[MAX_SIZE];
-    
+
     // Enter your input:
     std::cout << "Enter a number: ";
     std::cin >> input;

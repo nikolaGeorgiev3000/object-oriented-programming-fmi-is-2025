@@ -1,13 +1,13 @@
 #include <iostream>
 
-void swapIntegers(int &a, int &b)
+void swapIntegers(int& a, int& b)
 {
     int temp = a;
     a = b;
     b = temp;
 }
 
-void selectionSort(int *arr, size_t size, bool (*comparator)(int, int))
+void selectionSort(int* arr, size_t size, bool (*comparator)(int, int))
 {
     if (!arr || !comparator)
     {
@@ -31,7 +31,7 @@ void selectionSort(int *arr, size_t size, bool (*comparator)(int, int))
     }
 }
 
-void printArr(const int *arr, size_t size)
+void printArr(const int* arr, size_t size)
 {
     if (!arr)
     {
@@ -69,7 +69,8 @@ int main()
         int arr[SIZE] = {5, 1, 0, -2, 4, 1, 6, 3, 9, 7};
 
         // selectionSort(arr, SIZE, ascendingComparator); // Pointer to function
-        selectionSort(arr, SIZE, [](int a, int b) { return a < b; }); // Passing Lambda function
+        selectionSort(arr, SIZE, [](int a, int b)
+                      { return a < b; }); // Passing Lambda function
 
         printArr(arr, SIZE);
     }
@@ -79,7 +80,8 @@ int main()
         int arr[SIZE] = {5, 1, 0, -2, 4, 1, 6, 3, 9, 7};
 
         // selectionSort(arr, SIZE, descendingComparator); // Pointer to function
-        selectionSort(arr, SIZE, [](int a, int b) { return a > b; });
+        selectionSort(arr, SIZE, [](int a, int b)
+                      { return a > b; });
 
         printArr(arr, SIZE);
     }
@@ -89,7 +91,8 @@ int main()
         int arr[SIZE] = {5, 1, 0, -2, 4, 1, 6, 3, 9, 7};
 
         // selectionSort(arr, SIZE, evensBeforeOddsComparator); // Pointer to function
-        selectionSort(arr, SIZE, [](int a, int b) { return a % 2 == 0; });
+        selectionSort(arr, SIZE, [](int a, int b)
+                      { return a % 2 == 0; });
 
         printArr(arr, SIZE);
     }

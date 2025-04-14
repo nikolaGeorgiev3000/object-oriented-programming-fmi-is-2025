@@ -2,7 +2,9 @@
 
 enum class ReadingState
 {
-    Initial, Word, Whitespace
+    Initial,
+    Word,
+    Whitespace
 };
 
 bool isLower(char c)
@@ -22,7 +24,8 @@ bool isLetter(char c)
 
 size_t countWords(const char* str)
 {
-    if (!str) return 0;
+    if (!str)
+        return 0;
 
     size_t countToReturn = 0;
     ReadingState state = ReadingState::Initial;
@@ -52,10 +55,10 @@ size_t countWords(const char* str)
 
 int main()
 {
-	std::cout << countWords("    ") << std::endl;
-	std::cout << countWords("test") << std::endl;
-	std::cout << countWords("Good morning, Vietnam!") << std::endl;
-	std::cout << countWords("  Good  morning,     Vietnam!") << std::endl;
-	std::cout << countWords("  Good  morning,     Vietnam!    ") << std::endl;
-	std::cout << countWords("Good  morning, Vietnam!    ") << std::endl;
+    std::cout << countWords("    ") << std::endl;
+    std::cout << countWords("test") << std::endl;
+    std::cout << countWords("Good morning, Vietnam!") << std::endl;
+    std::cout << countWords("  Good  morning,     Vietnam!") << std::endl;
+    std::cout << countWords("  Good  morning,     Vietnam!    ") << std::endl;
+    std::cout << countWords("Good  morning, Vietnam!    ") << std::endl;
 }

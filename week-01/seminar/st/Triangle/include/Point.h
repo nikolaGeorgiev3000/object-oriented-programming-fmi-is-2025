@@ -5,5 +5,5 @@ struct Point
     int x, y;
 };
 
-void readPoint(Point &);
-void printPoint(const Point &);
+void readPoint(Point&);
+void printPoint(const Point&);

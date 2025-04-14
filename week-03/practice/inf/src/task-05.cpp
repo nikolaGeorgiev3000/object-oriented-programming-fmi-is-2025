@@ -5,18 +5,21 @@
 на редовете да бъде в същия файл.
 */
 
-#include <iostream>
-#include <fstream>
 #include <cstring>
-#pragma warning(disable:4996)
+#include <fstream>
+#include <iostream>
+#pragma warning(disable : 4996)
 
-int getLinesCount(std::ifstream& ifs) {
-    if (ifs.is_open()) {
+int getLinesCount(std::ifstream& ifs)
+{
+    if (ifs.is_open())
+    {
         int lines = 0;
 
         char buffer[256];
 
-        while (ifs.getline(buffer, 256)) {
+        while (ifs.getline(buffer, 256))
+        {
             ++lines;
         }
 
@@ -29,13 +32,16 @@ int getLinesCount(std::ifstream& ifs) {
     return -1;
 }
 
-char** getLines(std::ifstream& ifs, size_t size) {
-    if (ifs.is_open()) {
+char** getLines(std::ifstream& ifs, size_t size)
+{
+    if (ifs.is_open())
+    {
         char** lines = new char*[size];
 
         char buffer[256];
 
-        for (size_t i = 0; ifs.getline(buffer, 256); ++i) {
+        for (size_t i = 0; ifs.getline(buffer, 256); ++i)
+        {
             int len = strlen(buffer);
             lines[i] = new (std::nothrow) char[len + 1];
             strncpy(lines[i], buffer, len);
@@ -50,8 +56,10 @@ char** getLines(std::ifstream& ifs, size_t size) {
     return nullptr;
 }
 
-int partition(char** arr, size_t size) {
-    if (strcmp(arr[size - 1], arr[0]) > 0) {
+int partition(char** arr, size_t size)
+{
+    if (strcmp(arr[size - 1], arr[0]) > 0)
+    {
         std::swap(arr[size - 1], arr[0]);
     }
 
@@ -59,17 +67,20 @@ int partition(char** arr, size_t size) {
 
     int left = 0, right = size - 1;
 
-    while (true) {
+    while (true)
+    {
         while (strcmp(arr[left], pivot) < 0)
             ++left;
-        
+
         while (strcmp(arr[right], pivot) > 0)
             --right;
-        
-        if (left < right) {
+
+        if (left < right)
+        {
             std::swap(arr[left], arr[right]);
         }
-        else {
+        else
+        {
             break;
         }
     }
@@ -77,10 +88,11 @@ int partition(char** arr, size_t size) {
     return left;
 }
 
-void quickSort(char** arr, size_t size) {
+void quickSort(char** arr, size_t size)
+{
     if (!arr || size < 2)
         return;
-    
+
     int part = partition(arr, size);
 
     quickSort(arr, part);
@@ -102,7 +114,8 @@ int main()
 
     std::ofstream ofs(fpath, std::ios::out);
 
-    for (size_t i = 0; i < linesCount; ++i) {
+    for (size_t i = 0; i < linesCount; ++i)
+    {
         ofs << lines[i] << '\n';
         delete[] lines[i];
     }

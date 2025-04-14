@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 #define MAX_N 100 // Максимален брой триъгълници
 
@@ -21,8 +21,8 @@ struct Triangle
         return sqrt(s * (s - a) * (s - b) * (s - c));
     }
 
-private:
-    static double distance(const Point &p1, const Point &p2)
+  private:
+    static double distance(const Point& p1, const Point& p2)
     {
         return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
     }
@@ -46,7 +46,7 @@ void sortTriangles(Triangle triangles[], int n)
     }
 }
 
-void printTriangle(const Triangle &t)
+void printTriangle(const Triangle& t)
 {
     std::cout << "Triangle: (" << t.A.x << ", " << t.A.y << "), "
               << "(" << t.B.x << ", " << t.B.y << "), "

@@ -1,5 +1,5 @@
-#include "pch.h"
 #include "Point.h"
+#include "pch.h"
 #include <iostream>
 
 void readPoint(Point& p)

@@ -1,4 +1,4 @@
-// 1. Напишете функция, която приема символен низ и връща ново заделен символен низ, 
+// 1. Напишете функция, която приема символен низ и връща ново заделен символен низ,
 // съдържащ само цифрите от подадения низ.
 
 #include <iostream>
@@ -10,13 +10,15 @@ bool isDigit(char c)
 
 size_t countDigits(const char* str)
 {
-    if (!str) return 0;
+    if (!str)
+        return 0;
 
     size_t count = 0;
 
     while (*str)
     {
-        if (isDigit(*str)) ++count;
+        if (isDigit(*str))
+            ++count;
         str++;
     }
 
@@ -25,7 +27,8 @@ size_t countDigits(const char* str)
 
 char* filterDigits(const char* str)
 {
-    if (!str) return nullptr;
+    if (!str)
+        return nullptr;
 
     size_t digitsCount = countDigits(str);
     char* toReturn = new char[digitsCount + 1];
@@ -48,10 +51,10 @@ char* filterDigits(const char* str)
 int main()
 {
     char* filtered = filterDigits(")Lso!c6d%9ucpB*CED5su2DH%&7t4)*");
-	std::cout << filtered << std::endl;
+    std::cout << filtered << std::endl;
 
     // Free the heap memory
     delete[] filtered;
-    
+
     return 0;
 }

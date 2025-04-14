@@ -1,6 +1,6 @@
 // Create a structure about the figure `Triangle`
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 enum class TriangleTypeBySides
 {
@@ -33,7 +33,7 @@ struct Point
         std::cout << "(" << this->x << ", " << this->y << ")\n";
     }
 
-    double distanceTo(const Point &other) const
+    double distanceTo(const Point& other) const
     {
         return sqrt((x - other.x) * (x - other.x) +
                     (y - other.y) * (y - other.y)); // c = sqrt(a^2 + b^2)
@@ -123,7 +123,7 @@ struct Triangle
 // Helper functions for the `Triangle` structure
 
 // Convert TriangleTypeBySides to string
-const char *triangleTypeBySidesToString(TriangleTypeBySides type)
+const char* triangleTypeBySidesToString(TriangleTypeBySides type)
 {
     switch (type)
     {
@@ -139,7 +139,7 @@ const char *triangleTypeBySidesToString(TriangleTypeBySides type)
 }
 
 // Convert TriangleTypeByAngles to string
-const char *triangleTypeByAnglesToString(TriangleTypeByAngles type)
+const char* triangleTypeByAnglesToString(TriangleTypeByAngles type)
 {
     switch (type)
     {

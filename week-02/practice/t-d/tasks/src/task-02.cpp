@@ -10,17 +10,17 @@ struct ComplexNumber
         return {real, -imag};
     }
 
-    ComplexNumber operator+(const ComplexNumber &other) const
+    ComplexNumber operator+(const ComplexNumber& other) const
     {
         return {real + other.real, imag + other.imag};
     }
 
-    ComplexNumber operator-(const ComplexNumber &other) const
+    ComplexNumber operator-(const ComplexNumber& other) const
     {
         return {real - other.real, imag - other.imag};
     }
 
-    ComplexNumber operator*(const ComplexNumber &other) const
+    ComplexNumber operator*(const ComplexNumber& other) const
     {
         return {real * other.real - imag * other.imag,
                 imag * other.real + real * other.imag};
@@ -37,8 +37,7 @@ struct ComplexNumber
 
         return {
             (real * other.real + imag * other.imag) / denominator,
-            (imag * other.real - real * other.imag) / denominator
-        };
+            (imag * other.real - real * other.imag) / denominator};
     }
 
     bool operator==(const ComplexNumber& other) const
@@ -67,27 +66,27 @@ int main()
     c1.print();
     c2.print();
 
-    std::cout <<"\nConjugates:\n";
+    std::cout << "\nConjugates:\n";
     c1.conjugate().print();
     c2.conjugate().print();
 
-    std::cout <<"\nAddition:\n";
+    std::cout << "\nAddition:\n";
     (c1 + c2).print();
 
-    std::cout <<"\nSubtraction:\n";
+    std::cout << "\nSubtraction:\n";
     (c1 - c2).print();
 
-    std::cout <<"\nMultiplication:\n";
+    std::cout << "\nMultiplication:\n";
     (c1 * c2).print();
 
-    std::cout <<"\nDivision:\n";
-    
+    std::cout << "\nDivision:\n";
+
     // Exception handling when division by zero
     try
     {
         (c1 / c2).print();
     }
-    catch(const std::exception& e)
+    catch (const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }

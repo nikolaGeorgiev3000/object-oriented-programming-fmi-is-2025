@@ -5,14 +5,14 @@
 
 constexpr short RGB_CONSTANT = 256;
 
-unsigned getRgbValue(const Color &color)
+unsigned getRgbValue(const Color& color)
 {
     return color.R == 0 && color.G == 0 && color.B == 0
                ? 256 * 256 * 256
                : color.R * 256 * 256 + color.G * 256 + color.B;
 }
 
-size_t getColorCount(std::ifstream &ifs)
+size_t getColorCount(std::ifstream& ifs)
 {
     if (!ifs.is_open())
     {
@@ -23,7 +23,7 @@ size_t getColorCount(std::ifstream &ifs)
     return getOccurences(ifs, COLOR_DELIMITER) + 1; // The last color does not have a delimiter
 }
 
-void setColor(Color &color, unsigned long rgbValue)
+void setColor(Color& color, unsigned long rgbValue)
 {
     color.R = rgbValue / (RGB_CONSTANT * RGB_CONSTANT);
     rgbValue -= color.R * (RGB_CONSTANT * RGB_CONSTANT);
@@ -35,21 +35,21 @@ void setColor(Color &color, unsigned long rgbValue)
 }
 
 // Reading functions
-void readColor(std::ifstream &ifs, Color &color)
+void readColor(std::ifstream& ifs, Color& color)
 {
     unsigned long rgbValue;
     ifs >> rgbValue;
     setColor(color, rgbValue);
 }
 
-Color *readColors(std::ifstream &ifs, size_t &size)
+Color* readColors(std::ifstream& ifs, size_t& size)
 {
     size = getColorCount(ifs);
 
     if (size == 0)
         return nullptr;
 
-    Color *colorArr = new Color[size];
+    Color* colorArr = new Color[size];
 
     for (size_t i = 0; i < size; ++i)
     {
@@ -60,7 +60,7 @@ Color *readColors(std::ifstream &ifs, size_t &size)
     return colorArr;
 }
 
-Color *readColors(const char *fileName, size_t &size)
+Color* readColors(const char* fileName, size_t& size)
 {
     std::ifstream ifs(fileName);
 
@@ -79,11 +79,12 @@ void writeColor(std::ofstream& ofs, const Color& color)
     ofs << getRgbValue(color);
 }
 
-void writeColors(std::ofstream& ofs, size_t size, const Color* colorArr) 
+void writeColors(std::ofstream& ofs, size_t size, const Color* colorArr)
 {
-    if (!ofs.is_open()) return;
+    if (!ofs.is_open())
+        return;
 
-    for (size_t i = 0; i < size - 1; ++i) 
+    for (size_t i = 0; i < size - 1; ++i)
     {
         writeColor(ofs, colorArr[i]);
         ofs << COLOR_DELIMITER;
@@ -95,7 +96,7 @@ void writeColors(const char* filename, size_t size, const Color* colorArr)
 {
     std::ofstream ofs(filename);
 
-    if (!ofs.is_open()) 
+    if (!ofs.is_open())
     {
         std::cerr << "Error opening file!";
         return;

@@ -1,16 +1,18 @@
-#include <iostream>
 #include <cstring>
 #include <fstream>
+#include <iostream>
 
 constexpr size_t MAX_NAME_LENGTH = 25;
 
-struct Student {
+struct Student
+{
     char name[MAX_NAME_LENGTH];
     unsigned age;
     float height;
 };
 
-Student createStudent(const char* name, unsigned age, float height) {
+Student createStudent(const char* name, unsigned age, float height)
+{
     Student toReturn;
 
     strcpy(toReturn.name, name);
@@ -20,15 +22,18 @@ Student createStudent(const char* name, unsigned age, float height) {
     return toReturn;
 }
 
-void serializeStudent(std::ofstream& outFile, const Student& student) {
+void serializeStudent(std::ofstream& outFile, const Student& student)
+{
     outFile.write(reinterpret_cast<const char*>(&student), sizeof(student));
 }
 
-void deserializeStudent(std::ifstream& inFile, Student& st) {
+void deserializeStudent(std::ifstream& inFile, Student& st)
+{
     inFile.read(reinterpret_cast<char*>(&st), sizeof(st));
 }
 
-void printStudent(const Student& st) {
+void printStudent(const Student& st)
+{
     std::cout << "Student info: " << st.name << ", " << st.age << ", " << st.height << "\n";
 }
 

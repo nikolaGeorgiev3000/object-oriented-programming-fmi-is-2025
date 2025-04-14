@@ -1,20 +1,21 @@
 #include "Portfolio.hpp"
-#include <iostream>
 #include <cstring>
+#include <iostream>
 #include <stdexcept>
 
-Portfolio::Portfolio(const char* ratesFile) 
+Portfolio::Portfolio(const char* ratesFile)
     : entries(nullptr), size(0), capacity(0), rates(ratesFile) {}
 
-                                              
 Portfolio::Portfolio(const Portfolio& other)
     : entries(nullptr), size(0), capacity(0), rates(other.rates)
 {
     copyFrom(other);
 }
 
-Portfolio& Portfolio::operator=(const Portfolio& other) {
-    if (this != &other) {
+Portfolio& Portfolio::operator=(const Portfolio& other)
+{
+    if (this != &other)
+    {
         free();
         copyFrom(other);
     }
@@ -22,11 +23,13 @@ Portfolio& Portfolio::operator=(const Portfolio& other) {
     return *this;
 }
 
-Portfolio::~Portfolio() {
+Portfolio::~Portfolio()
+{
     free();
 }
 
-void Portfolio::copyFrom(const Portfolio& other) {
+void Portfolio::copyFrom(const Portfolio& other)
+{
     size = other.size;
     capacity = other.capacity;
 
@@ -38,14 +41,16 @@ void Portfolio::copyFrom(const Portfolio& other) {
     }
 }
 
-void Portfolio::free() {
+void Portfolio::free()
+{
     delete[] entries;
     entries = nullptr;
     size = capacity = 0;
     // rates.~ExchangeRates(); Just kidding ;)
 }
 
-void Portfolio::resize() {
+void Portfolio::resize()
+{
     capacity = (capacity == 0) ? INITIAL_CAPACITY : capacity * 2;
 
     Entry* temp = new Entry[capacity];
@@ -59,7 +64,8 @@ void Portfolio::resize() {
     entries = temp;
 }
 
-void Portfolio::print() const {
+void Portfolio::print() const
+{
     for (size_t i = 0; i < size; ++i)
     {
         std::cout << entries[i].amount << " " << entries[i].currency << std::endl;
@@ -68,8 +74,10 @@ void Portfolio::print() const {
     rates.print();
 }
 
-void Portfolio::add(double amount, const char* currency) {
-    if (size == capacity) {
+void Portfolio::add(double amount, const char* currency)
+{
+    if (size == capacity)
+    {
         resize();
     }
     entries[size].amount = amount;
@@ -78,7 +86,8 @@ void Portfolio::add(double amount, const char* currency) {
     ++size;
 }
 
-double Portfolio::getAmount(const char* targetCurrency) const {
+double Portfolio::getAmount(const char* targetCurrency) const
+{
     double toReturn = 0.0;
 
     for (size_t i = 0; i < size; ++i)

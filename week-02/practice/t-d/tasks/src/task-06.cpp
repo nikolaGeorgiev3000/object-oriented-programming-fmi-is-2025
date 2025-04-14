@@ -19,7 +19,7 @@ enum class Genre
 };
 
 // Helper functions
-Genre getGenreFromString(const char *genreStr)
+Genre getGenreFromString(const char* genreStr)
 {
     if (genreStr[0] == 'R')
         return Genre::Rock;
@@ -34,7 +34,7 @@ Genre getGenreFromString(const char *genreStr)
     return Genre::Unknown;
 }
 
-const char *convertGenreToString(Genre genre)
+const char* convertGenreToString(Genre genre)
 {
     switch (genre)
     {
@@ -116,7 +116,7 @@ struct Playlist
         songs[songCount++] = songToAdd;
         std::cout << "Song added successfully! Currently the playlist has "
                   << songCount << " songs.\n";
-    }   
+    }
 
     Song* findSongInPlaylistByTitle(const Song& songToFind)
     {
@@ -140,7 +140,7 @@ struct Playlist
     }
 
     // Сортиране на песните по подаден предикат, приемащ като аргументи 2 песни
-    void sortSongsByPred(bool (*compare) (const Song&, const Song&))
+    void sortSongsByPred(bool (*compare)(const Song&, const Song&))
     {
         for (size_t i = 0; i < songCount - 1; i++)
         {
@@ -189,17 +189,15 @@ bool sortPlaylistByTitleAscending(const Song& first, const Song& second)
     for (size_t i = 0; first.title[i] != '\0' || second.title[i] != '\0'; ++i)
     {
         if (first.title[i] != second.title[i])
-        return first.title[i] < second.title[i];
+            return first.title[i] < second.title[i];
     }
     return false;
 }
 
-
-
 int main()
 {
     Playlist myPlaylist;
-    
+
     // Manually adding test songs
     Song song1 = {"Thunderstruck", "AC/DC", Genre::Rock, 4.8, 500000};
     Song song2 = {"Bohemian Rhapsody", "Queen", Genre::Rock, 5.0, 1000000};
@@ -208,7 +206,7 @@ int main()
     myPlaylist.addSong(song1);
     myPlaylist.addSong(song2);
     myPlaylist.addSong(song3);
-    
+
     std::cout << "\nOriginal Playlist:\n";
     myPlaylist.printSongsInPlaylist();
 
@@ -223,5 +221,4 @@ int main()
     std::cout << "\nSorting by Title (Alphabetical Order):\n";
     myPlaylist.sortSongsByPred(sortPlaylistByTitleAscending);
     myPlaylist.printSongsInPlaylist();
-
 }

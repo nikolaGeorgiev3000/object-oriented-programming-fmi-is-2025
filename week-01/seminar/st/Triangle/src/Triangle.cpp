@@ -1,15 +1,15 @@
-#include "pch.h"
 #include "Triangle.h"
+#include "pch.h"
 #include <iostream>
 
-void readTriangle(Triangle &t)
+void readTriangle(Triangle& t)
 {
     readPoint(t.A);
     readPoint(t.B);
     readPoint(t.C);
 }
 
-void readTriangles(Triangle *triangles, size_t n)
+void readTriangles(Triangle* triangles, size_t n)
 {
     for (size_t i = 0; i < n; i++)
     {
@@ -17,7 +17,7 @@ void readTriangles(Triangle *triangles, size_t n)
     }
 }
 
-void printTriangle(const Triangle &t)
+void printTriangle(const Triangle& t)
 {
     printPoint(t.A);
     std::cout << ", ";
@@ -26,7 +26,7 @@ void printTriangle(const Triangle &t)
     printPoint(t.C);
 }
 
-void printTriangles(const Triangle *triangles, size_t n)
+void printTriangles(const Triangle* triangles, size_t n)
 {
     for (size_t i = 0; i < n; i++)
     {

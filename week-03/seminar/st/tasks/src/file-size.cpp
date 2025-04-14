@@ -1,7 +1,7 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-unsigned getFileSize(std::ofstream &out)
+unsigned getFileSize(std::ofstream& out)
 {
     if (!out.is_open())
     {

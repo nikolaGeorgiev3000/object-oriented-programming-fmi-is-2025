@@ -1,22 +1,29 @@
 #include <iostream>
 
-class A {};
-class B {};
-class C {};
+class A
+{
+};
+class B
+{
+};
+class C
+{
+};
 
 class Entity
 {
-public:
-    Entity() {
+  public:
+    Entity()
+    {
         std::cout << "Def called.\n";
     }
 
-    ~Entity() {
+    ~Entity()
+    {
         std::cout << "D-tor called.\n";
     }
 
-
-private:
+  private:
     A a;
     B b;
     C c;
@@ -24,9 +31,8 @@ private:
 
 int main()
 {
-    Entity e; // Конструктор по подразбиране.
+    Entity e;     // Конструктор по подразбиране.
     Entity e1(e); // Копиращ конструктор.
-    e = e1; // Оператор за присвояване.
-
+    e = e1;       // Оператор за присвояване.
 
 } // Деструктор на e и e1.

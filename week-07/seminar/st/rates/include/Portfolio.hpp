@@ -4,9 +4,9 @@
 #define __PORTFOLIO__
 #endif
 
-class Portfolio {
-public:
- 
+class Portfolio
+{
+  public:
     Portfolio(const char* ratesFile);
     Portfolio(const Portfolio&);
     Portfolio& operator=(const Portfolio&);
@@ -16,8 +16,9 @@ public:
     double getAmount(const char*) const;
     void print() const;
 
-private:
-    struct Entry{
+  private:
+    struct Entry
+    {
         double amount;
         char currency[MAX_CURRENCY_LENGTH];
     };

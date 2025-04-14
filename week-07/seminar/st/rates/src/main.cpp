@@ -15,8 +15,8 @@ int main()
     double sumInBGN = p.getAmount("BGN"); // 17 + 39.12 + 30.07 = 86.12
 
     std::cout << sumInBGN << std::endl;
-    
+
     // Its possible that the data in the file
-    // is not up to date and it might produce different 
+    // is not up to date and it might produce different
     // results.
 }

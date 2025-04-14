@@ -1,18 +1,21 @@
-/* 
-4. Напишете програма, която чете три цели числа от стандартния вход. 
+/*
+4. Напишете програма, която чете три цели числа от стандартния вход.
 Напишете функция, която приема трите числа и име на файл, в който ще запишете сумата и произведението им.
 */
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-void writeSumAndProductToFile(int a, int b, int c, const char* filename) {
-    if (!filename) return;
+void writeSumAndProductToFile(int a, int b, int c, const char* filename)
+{
+    if (!filename)
+        return;
 
     std::ofstream outFile(filename); // Text work
 
-    if (!outFile.is_open()) {
+    if (!outFile.is_open())
+    {
         std::cerr << "Error opening file with name: " << filename;
-        return;    
+        return;
     }
 
     int sum = a + b + c;
@@ -25,7 +28,8 @@ void writeSumAndProductToFile(int a, int b, int c, const char* filename) {
     outFile.close();
 }
 
-int main() {
+int main()
+{
     int x, y, z;
     std::cout << "Enter 3 numbers: ";
     std::cin >> x >> y >> z;

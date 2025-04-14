@@ -2,11 +2,11 @@
 
 class Time
 {
-public:
+  public:
     Time();
     Time(unsigned hours, unsigned minutes, unsigned seconds);
     Time(unsigned secondsFromMidnight);
-    
+
     void setHours(unsigned hours);
     void setMinutes(unsigned minutes);
     void setSeconds(unsigned seconds);
@@ -24,10 +24,10 @@ public:
     bool isTimeForDinner() const;
 
     Time difference(const Time& other) const;
-    
+
     void print() const;
-    
-private:
+
+  private:
     void initializeFromSeconds(unsigned secondsFromMidnight);
     unsigned hrs = 0;
     unsigned mins = 0;

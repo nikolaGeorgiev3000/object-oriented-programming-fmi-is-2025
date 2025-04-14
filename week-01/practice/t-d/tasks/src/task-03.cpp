@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-size_t countDivisiblesByK(const int *arr, size_t size, int k)
+size_t countDivisiblesByK(const int* arr, size_t size, int k)
 {
     if (!arr || k == 0)
         return 0;
@@ -18,9 +18,9 @@ size_t countDivisiblesByK(const int *arr, size_t size, int k)
     return countToReturn;
 }
 
-void getDivisiblesByK(int *&resultArr, size_t &resultArrSize,
-                      const int *first, size_t sizeFirst,
-                      const int *second, size_t sizeSecond,
+void getDivisiblesByK(int*& resultArr, size_t& resultArrSize,
+                      const int* first, size_t sizeFirst,
+                      const int* second, size_t sizeSecond,
                       int k)
 {
     if (!first || !second || k == 0)
@@ -51,11 +51,11 @@ void getDivisiblesByK(int *&resultArr, size_t &resultArrSize,
 //     {
 //         std::cin >> arr[i];
 //     }
-    
+
 //     return;
 // }
 
-void printArray(const int *arr, size_t size)
+void printArray(const int* arr, size_t size)
 {
     if (!arr)
         return;

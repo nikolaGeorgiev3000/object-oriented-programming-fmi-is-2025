@@ -10,10 +10,10 @@ struct Book
 
 bool areEqual(const Book& b1, const Book& b2)
 {
-    return b1.price == b2.price && 
-        b1.genre == b2.genre && 
-        b1.copiesCount == b2.copiesCount && 
-        b1.isSoldOut == b2.isSoldOut;
+    return b1.price == b2.price &&
+           b1.genre == b2.genre &&
+           b1.copiesCount == b2.copiesCount &&
+           b1.isSoldOut == b2.isSoldOut;
 }
 
 void createBook(Book& b)

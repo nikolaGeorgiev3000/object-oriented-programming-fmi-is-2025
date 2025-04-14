@@ -1,6 +1,6 @@
 #include <iostream>
 
-size_t getCountOfElementsSatisfyingACondition(const int *arr, size_t size, bool (*pred)(int))
+size_t getCountOfElementsSatisfyingACondition(const int* arr, size_t size, bool (*pred)(int))
 {
     if (!arr || !pred) // Invalid pointers
     {
@@ -42,15 +42,18 @@ int main()
 
     // More lambda func examples
     int threshold = 10;
-    auto checkGreater = [threshold](int x) { return x > threshold; };
-    std::cout << std::boolalpha << checkGreater(11);              
+    auto checkGreater = [threshold](int x)
+    { return x > threshold; };
+    std::cout << std::boolalpha << checkGreater(11);
     std::cout << std::boolalpha << checkGreater(9);
-    
+
     // More examples
     int sum = 0;
-    auto addToSum = [&sum](int x) { sum += x; };
+    auto addToSum = [&sum](int x)
+    { sum += x; };
     addToSum(10);
-    std::cout << "\n" << sum << std::endl;
+    std::cout << "\n"
+              << sum << std::endl;
 
     return 0;
 }

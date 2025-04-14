@@ -26,7 +26,7 @@ int main()
 {
     int a = 10, b = 10, c = 10, d = 10;
     // f(a);
-    // std::cout << a << std::endl; 
+    // std::cout << a << std::endl;
     // g(b);
     // std::cout << b << std::endl;
     int something = h(&c);

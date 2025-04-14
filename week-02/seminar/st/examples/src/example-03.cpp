@@ -1,5 +1,5 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 int main()
 {
@@ -11,16 +11,16 @@ int main()
     // std::cout << buff << std::endl;
 
     int x = 0;
-    std::cin >> x; // 5
+    std::cin >> x;                               // 5
     std::cout << (std::cin.good()) << std::endl; // True -> all is good
 
-    std::cin >> x; // a 
-    std::cout << (std::cin.bad()) << std::endl; // False -> no critical error
+    std::cin >> x;                               // a
+    std::cout << (std::cin.bad()) << std::endl;  // False -> no critical error
     std::cout << (std::cin.fail()) << std::endl; // True -> there is an error (not fatal, but still an error)
 
-    std::cout << (std::cin.eof()) << std::endl; // False 
+    std::cout << (std::cin.eof()) << std::endl; // False
 
-    std::cin.clear(); 
+    std::cin.clear();
 
     return 0;
 }

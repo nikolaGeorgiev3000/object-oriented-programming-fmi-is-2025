@@ -1,23 +1,32 @@
-#include <iostream>
-#include <cstring>
 #include <assert.h>
+#include <cstring>
+#include <iostream>
 
 const int STUDENT_MAX_SIZE = 10;
 
 enum class Major
 {
-    undefined, Inf, InfS, Cs, S
+    undefined,
+    Inf,
+    InfS,
+    Cs,
+    S
 };
 
 const char* getMajorStr(Major m)
 {
     switch (m)
     {
-        case Major::Inf : return "Inf";
-        case Major::InfS : return "InfS";
-        case Major::Cs : return "Cs";
-        case Major::S : return "S";
-        case Major::undefined : return "undefined";
+    case Major::Inf:
+        return "Inf";
+    case Major::InfS:
+        return "InfS";
+    case Major::Cs:
+        return "Cs";
+    case Major::S:
+        return "S";
+    case Major::undefined:
+        return "undefined";
     }
 
     return "";
@@ -69,10 +78,12 @@ void printDatabase(const StudentDatabase& sdb)
 
 enum class Criteria
 {
-    sortByName, sortByFn, sortByMajor
+    sortByName,
+    sortByFn,
+    sortByMajor
 };
 
-void sortDatabase(StudentDatabase& sdb, bool (*isLess) (const Student& lhs, const Student&rhs))
+void sortDatabase(StudentDatabase& sdb, bool (*isLess)(const Student& lhs, const Student& rhs))
 {
     for (int i = 0; i < sdb.studentsCount - 1; i++)
     {
@@ -89,32 +100,30 @@ void sortDatabase(StudentDatabase& sdb, bool (*isLess) (const Student& lhs, cons
 
 void sortByCriteria(StudentDatabase& sdb, Criteria cr)
 {
-    switch(cr)
+    switch (cr)
     {
-        case Criteria::sortByName : return 
-                                    sortDatabase(sdb, [](const Student& lhs, const Student& rhs) 
-                                                        {return strcmp(lhs.name, rhs.name) < 0;});
-        case Criteria::sortByFn : return 
-                                    sortDatabase(sdb, [](const Student& lhs, const Student& rhs) 
-                                                         {return lhs.fn < rhs.fn;});  
-        case Criteria::sortByMajor : return 
-                                    sortDatabase(sdb, [](const Student& lhs, const Student& rhs) 
-                                                         {return lhs.major > rhs.major;});  
-        default: assert(false && "Invalid sorting criteria!"); 
+    case Criteria::sortByName:
+        return sortDatabase(sdb, [](const Student& lhs, const Student& rhs)
+                            { return strcmp(lhs.name, rhs.name) < 0; });
+    case Criteria::sortByFn:
+        return sortDatabase(sdb, [](const Student& lhs, const Student& rhs)
+                            { return lhs.fn < rhs.fn; });
+    case Criteria::sortByMajor:
+        return sortDatabase(sdb, [](const Student& lhs, const Student& rhs)
+                            { return lhs.major > rhs.major; });
+    default:
+        assert(false && "Invalid sorting criteria!");
     }
 }
 
 int main()
 {
     StudentDatabase s =
-    {
-        3,
         {
-            {"Petur", 12, Major::InfS},
-            {"Ivan", 12345, Major::Cs},
-            {"Aleksandur", 56, Major::S}
-        }
-    };
+            3,
+            {{"Petur", 12, Major::InfS},
+             {"Ivan", 12345, Major::Cs},
+             {"Aleksandur", 56, Major::S}}};
 
     printDatabase(s);
     std::cout << std::endl;

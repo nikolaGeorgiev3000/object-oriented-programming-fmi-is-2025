@@ -2,15 +2,16 @@
 
 class Entity
 {
-private:
-	int x;
-public:
-	Entity(int x) : x(x) {}
+  private:
+    int x;
 
-	int get() const
-	{
-		return x;
-	}
+  public:
+    Entity(int x) : x(x) {}
+
+    int get() const
+    {
+        return x;
+    }
 };
 
 Entity copy(Entity e)
@@ -20,8 +21,8 @@ Entity copy(Entity e)
 
 int main()
 {
-	Entity e(12);
-	std::cout << e.get() << std::endl;
-	Entity e_copied = copy(e);
+    Entity e(12);
+    std::cout << e.get() << std::endl;
+    Entity e_copied = copy(e);
     std::cout << e_copied.get() << std::endl;
 }

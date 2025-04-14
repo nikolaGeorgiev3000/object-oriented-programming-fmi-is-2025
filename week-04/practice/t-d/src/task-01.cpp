@@ -2,16 +2,18 @@
     1) Напишете програма, която приема файл и показва каква е големината му.
 */
 
-
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-int getFileSizeBasic(const char* filename) {
-    if (!filename) return -1;
+int getFileSizeBasic(const char* filename)
+{
+    if (!filename)
+        return -1;
 
     std::ifstream inFile(filename);
 
-    if (!inFile.is_open()) return -1;
+    if (!inFile.is_open())
+        return -1;
 
     unsigned currPos = inFile.tellg();
     inFile.seekg(0, std::ios::end);
@@ -21,12 +23,15 @@ int getFileSizeBasic(const char* filename) {
     return fileSize;
 }
 
-int getFileSizeUniversal(const char* filename) {
-    if (!filename) return -1;
+int getFileSizeUniversal(const char* filename)
+{
+    if (!filename)
+        return -1;
 
     std::ifstream inFile(filename, std::ios::binary);
 
-    if (!inFile.is_open()) return -1;
+    if (!inFile.is_open())
+        return -1;
 
     inFile.seekg(0, std::ios::end);
     std::streampos fileSize = inFile.tellg();
@@ -34,7 +39,8 @@ int getFileSizeUniversal(const char* filename) {
     return static_cast<int>(fileSize);
 }
 
-int main() {
+int main()
+{
     std::cout << getFileSizeBasic("task01.cpp") << " bytes" << std::endl;
     std::cout << getFileSizeUniversal("task01.cpp") << " bytes" << std::endl;
 }
