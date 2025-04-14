@@ -2,8 +2,8 @@
 
 struct A
 {
-	char word[5];
-	int occupiedSpace;
+    char word[5];
+    int occupiedSpace;
 };
 
 int main()
