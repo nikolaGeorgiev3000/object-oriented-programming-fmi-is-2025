@@ -1,4 +1,4 @@
-# ☦️ OOP-IS-2025
+# Object-oriented_programming_FMI_IS_2025
 
 Object-Oriented Programming course — Summer semester at FMI  
 Maintained and practiced by [Nikola Georgiev](https://github.com/nikolaGeorgiev3000)
